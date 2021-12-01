@@ -13,9 +13,9 @@ class FolderViewModel {
 			// Every time the folder changes
 			.flatMapLatest { currentFolder in
 				// Start by emitting the initial value
-				Observable.just(currentFolder)
+				Observable.just(currentFolder as Folder?)
 					// Re-emit the folder every time a non-delete change occurs
-					.concat(currentFolder.changeObservable.map { _ in currentFolder })
+					.concat(currentFolder.changeObservable.map { _ in currentFolder as Folder? })
 					// Stop when a delete occurs
 					.takeUntil(currentFolder.deletedObservable)
 					// After a delete, set the current folder back to `nil`

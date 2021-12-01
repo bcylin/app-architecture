@@ -1,0 +1,9 @@
+source 'https://cdn.cocoapods.org/'
+
+target 'Recordings' do
+  use_frameworks!
+
+  pod 'RxSwift', "4.0.0"
+  pod 'RxDataSources', "3.0.2"
+
+end

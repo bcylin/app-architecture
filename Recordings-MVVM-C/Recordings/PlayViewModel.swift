@@ -18,9 +18,9 @@ class PlayViewModel {
 			.flatMapLatest { recording -> Observable<Recording?> in
 				guard let currentRecording = recording else { return Observable.just(nil) }
 				// Start by emitting the current recording
-				return Observable.just(currentRecording)
+				return Observable.just(currentRecording as Recording?)
 				// Re-emit the recording every time a non-delete change occurs
-				.concat(currentRecording.changeObservable.map { _ in currentRecording })
+				.concat(currentRecording.changeObservable.map { _ in currentRecording as Recording? })
 				// Stop when a delete occurs
 				.takeUntil(currentRecording.deletedObservable)
 				// After a delete, set the current recording back to `nil`
