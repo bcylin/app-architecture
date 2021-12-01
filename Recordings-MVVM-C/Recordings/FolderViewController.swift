@@ -16,6 +16,7 @@ class FolderViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		tableView.dataSource = nil
 		viewModel.navigationTitle.bind(to: rx.title).disposed(by: disposeBag)
 		viewModel.folderContents.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
 		tableView.rx.modelDeleted(Item.self)
